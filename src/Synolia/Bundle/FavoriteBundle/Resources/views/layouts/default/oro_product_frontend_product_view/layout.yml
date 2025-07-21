@@ -1,6 +1,6 @@
 layout:
     actions:
-        -   '@add':
+        - '@add':
             parentId: product_view_media_wrapper
             id: favorite_button
             prepend: true

@@ -16,6 +16,7 @@
     }) %}
 
     <button {{ block('block_attributes') }}>
+        {% import '@OroUI/layouts/renderIcon.html.twig' as renderIcon %}
         {{ renderIcon.icon({name: 'heart', extraClass: 'theme-icon__transparent favorite-button__icon' ~ heartSvgClass}) }}
     </button>
 {% endblock %}

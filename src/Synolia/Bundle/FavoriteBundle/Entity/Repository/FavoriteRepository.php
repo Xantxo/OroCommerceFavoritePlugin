@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Synolia\Bundle\FavoriteBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 use Oro\Bundle\CustomerBundle\Entity\CustomerUser;
 use Oro\Bundle\OrganizationBundle\Entity\Organization;
 use Oro\Bundle\SecurityBundle\ORM\Walker\AclHelper;
@@ -12,12 +13,12 @@ use Synolia\Bundle\FavoriteBundle\Entity\Favorite;
 
 class FavoriteRepository extends EntityRepository
 {
-    public function findAllFilteredByAcl(AclHelper $aclHelper): array
+    public function findAllFilteredByAcl(AclHelper $aclHelper, CustomerUser $user, Organization $organization): array
     {
-        return $aclHelper->apply($this->createQueryBuilder('f'))->getResult();
+        return $aclHelper->apply($this->getFavoritesProductsCollection($user, $organization))->getResult();
     }
 
-    public function getFavoritesProductsCollection(CustomerUser $user, Organization $organization): array
+    public function getFavoritesProductsCollection(CustomerUser $user, Organization $organization): Query
     {
         return $this->createQueryBuilder('f')
             ->resetDQLPart('select')
@@ -28,29 +29,17 @@ class FavoriteRepository extends EntityRepository
                 'user' => $user,
                 'organization' => $organization,
             ])
-            ->getQuery()->getArrayResult();
+            ->getQuery();
     }
 
-    public function getFavoritesProductsInSingleArray(CustomerUser $user, Organization $organization): array
-    {
-        $newArray = [];
-        $favorites = $this->getFavoritesProductsCollection($user, $organization);
-
-        foreach ($favorites as $favorite) {
-            $newArray[] = $favorite['product_id'];
-        }
-
-        return $newArray;
-    }
-
-    public function findAllProductIdsFilteredByAcl(AclHelper $aclHelper): array
+    public function findAllProductIdsFilteredByAcl(AclHelper $aclHelper, CustomerUser $user, Organization $organization): array
     {
         $ids = [];
-        $favorites = $this->findAllFilteredByAcl($aclHelper);
+        $favorites = $this->findAllFilteredByAcl($aclHelper, $user, $organization);
 
         /** @var Favorite $favorite */
         foreach ($favorites as $favorite) {
-            $ids[] = $favorite->getProduct()?->getId();
+            $ids[] = $favorite['product_id'];
         }
 
         return $ids;

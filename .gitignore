@@ -1,4 +1,4 @@
 /.idea
 /vendor
 .php_cs.cache
-/composer.lock
+/composer.lock.php-cs-fixer.cache

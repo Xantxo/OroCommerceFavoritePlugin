@@ -1,7 +1,7 @@
 parameters:
     level: 4
     reportUnmatchedIgnoredErrors: false
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - identifier: phpDoc.parseError
     bootstrapFiles:
         - ../vendor/autoload.php

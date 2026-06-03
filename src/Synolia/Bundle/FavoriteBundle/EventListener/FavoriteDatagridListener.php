@@ -35,8 +35,6 @@ class FavoriteDatagridListener
             return;
         }
 
-        /** @var FavoriteRepository $repo */
-        $repo = $this->entityManager->getRepository(Favorite::class);
         $user = $this->tokenAccessor->getUser();
         $organization = $this->tokenAccessor->getOrganization();
         $favProductIds = [];

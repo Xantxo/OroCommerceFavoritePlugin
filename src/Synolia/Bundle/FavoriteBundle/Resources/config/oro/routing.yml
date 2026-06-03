@@ -1,13 +1,13 @@
 synolia_ajax_button_favorite:
     resource: '@SynoliaFavoriteBundle/Controller/Frontend/FavoriteButtonAjaxController.php'
-    type: annotation
+    type: attribute
     prefix: /favorite
     options:
         frontend: true
 
 synolia_favorite_index:
     resource: '@SynoliaFavoriteBundle/Controller/Frontend/FavoriteController.php'
-    type: annotation
+    type: attribute
     prefix: /customer/favorite
     options:
         frontend: true

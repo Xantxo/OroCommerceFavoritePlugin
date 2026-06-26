@@ -23,10 +23,12 @@ use Oro\Bundle\ProductBundle\Entity\Product;
         'organization_column_name' => 'organization_id',
         'frontend_owner_type' => 'FRONTEND_USER',
         'frontend_owner_field_name' => 'customerUser',
-        'frontend_owner_column_name' => 'customer_user_id', ],
+        'frontend_owner_column_name' => 'customer_user_id',
+    ],
     'security' => [
         'type' => 'ACL',
-        'group_name' => 'commerce'],
+        'group_name' => 'commerce'
+    ],
 ])]
 class Favorite implements ExtendEntityInterface, OrganizationAwareInterface, DatesAwareInterface
 {

@@ -7,7 +7,7 @@ namespace Synolia\Bundle\FavoriteBundle\Controller\Frontend;
 use Oro\Bundle\LayoutBundle\Attribute\Layout;
 use Oro\Bundle\SecurityBundle\Attribute\Acl;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Synolia\Bundle\FavoriteBundle\Entity\Favorite;
 
 class FavoriteController extends AbstractController

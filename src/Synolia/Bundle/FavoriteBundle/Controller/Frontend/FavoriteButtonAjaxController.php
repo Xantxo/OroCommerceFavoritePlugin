@@ -9,7 +9,7 @@ use Oro\Bundle\ProductBundle\Entity\Product;
 use Oro\Bundle\SecurityBundle\Authentication\TokenAccessorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Synolia\Bundle\FavoriteBundle\Handler\FavoriteButtonAjaxHandler;
 
 #[Route('/ajax', options: ["expose"=>true])]
